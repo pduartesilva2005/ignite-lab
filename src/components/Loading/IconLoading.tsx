@@ -1,12 +1,12 @@
-import { Spinner } from 'phosphor-react'
+import { Spinner } from 'phosphor-react';
 
-interface PropsIconLoading{
+interface PropsIconLoading {
   size: number;
 }
 
 export function IconLoading(props: PropsIconLoading) {
   return (
-    <Spinner color="#00B37E" weight="duotone" size={props.size}>
+    <Spinner color="#fff" weight="duotone" size={props.size}>
       <animate
         attributeName="opacity"
         values="0;1;0"
@@ -24,5 +24,5 @@ export function IconLoading(props: PropsIconLoading) {
         repeatCount="indefinite"
       ></animateTransform>
     </Spinner>
-  )
+  );
 }
