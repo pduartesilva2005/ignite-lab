@@ -2,6 +2,8 @@ import { useState, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gql, useMutation } from '@apollo/client';
 import { Logo } from '../components/Logo';
+import { Footer } from '../components/Footer';
+import { IconLoading } from '../components/Loading/IconLoading';
 
 const CREATE_SUBSCRIBER_MUTATION = gql`
   mutation CreateSubscriber ($name: String!, $email: String!) {
@@ -34,11 +36,11 @@ export function Subscribe() {
 
   return (
     <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center">
-      <div className="w-full max-w-[1100px] flex items-center justify-between mt-20 mx-auto">
-        <div className="max-w-[640px]">
+      <div className="w-full max-w-[68.75rem] flex flex-col lg:flex lg:flex-row items-center justify-between mt-20 px-6 mx-auto">
+        <div className="flex flex-col max-w-[21.875rem] lg:max-w-[580px] xl:max-w-[40rem] items-center lg:items-start justify-center text-center lg:text-left mb-8 lg:mb-0">
           <Logo />
 
-          <h1 className="mt-8 text-[2.5rem] leading-tight">
+          <h1 className="mt-8 text-[2.125rem] xl:text-[2.5rem] leading-tight">
             Construa uma{' '}
             <strong className="text-blue-500">aplicação completa,</strong> do
             zero, com <strong className="text-blue-500">React</strong>
@@ -51,14 +53,14 @@ export function Subscribe() {
           </p>
         </div>
 
-        <div className="p-8 bg-gray-700 border border-gray-500 rounded">
+        <div className="p-8 bg-gray-700 border border-gray-500 rounded w-full lg:w-auto">
           <strong className="text-2xl mb-6 block">
             Inscreva-se gratuitamente
           </strong>
 
           <form onSubmit={handleSubscribe} className="flex flex-col gap-2 w-full">
             <input
-              className="bg-gray-900 rounded px-5 h-14"
+              className="bg-gray-900 rounded px-5 h-14 placeholder-gray-300 focus:outline-0 focus:border focus:ring-green-300 focus:border-green-300 hover:border-green-300 hover:border invalid:text-red-500 focus:invalid:border-red-500 transition-all duration-500 ease-in-out text-sm lg:text-[100%]"
               type="text"
               placeholder="Seu nome completo"
               value={name}
@@ -66,7 +68,7 @@ export function Subscribe() {
             />
 
             <input
-              className="bg-gray-900 rounded px-5 h-14"
+              className="bg-gray-900 rounded px-5 h-14 placeholder-gray-300 focus:outline-0 focus:border focus:ring-green-300 focus:border-green-300 hover:border-green-300 hover:border invalid:text-red-500 focus:invalid:border-red-500 transition-all duration-500 ease-in-out text-sm lg:text-[100%]"
               type="email"
               placeholder="Digite seu e-mail"
               value={email}
@@ -78,7 +80,7 @@ export function Subscribe() {
               disabled={loading}
               className="mt-4 bg-green-500 uppercase py-4 rounded font-bold text0sm hover:bg-green-700 transition-colors disabled:opacity-50"
             >
-              Garantir minha vaga
+              {loading ? <IconLoaading size={40} /> : 'Garantir minha vaga'}
             </button>
           </form>
         </div>
@@ -89,6 +91,10 @@ export function Subscribe() {
         className="mt-10"
         alt="Image of Code Mockup"
       />
+
+      <div className="flex w-full bg-gray-900 px-8">
+        <Footer/>
+      </div>
     </div>
   );
 }
