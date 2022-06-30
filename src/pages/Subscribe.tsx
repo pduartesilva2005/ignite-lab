@@ -5,13 +5,15 @@ import { Logo } from '../components/Logo';
 import { Footer } from '../components/Footer';
 import { IconLoading } from '../components/Loading/IconLoading';
 
+import codeMockupImg from '../assets/code-mockup.png';
+
 export function Subscribe() {
   const navigate = useNavigate();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
-  const [createSubscriber, { loading }] = useCreateSubscriberMutation();
+  const [createSubscriber, { loading, data }] = useCreateSubscriberMutation();
 
   async function handleSubscribe(event: FormEvent) {
     event.preventDefault();
@@ -83,11 +85,7 @@ export function Subscribe() {
         </div>
       </div>
 
-      <img
-        src="/src/assets/code-mockup.png"
-        className="mt-10"
-        alt="Image of Code Mockup"
-      />
+      <img src={codeMockupImg} className="mt-10" alt="Image of Code Mockup" />
 
       <div className="flex w-full bg-gray-900 px-8">
         <Footer />
